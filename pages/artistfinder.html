@@ -1,0 +1,164 @@
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Performing Arts University</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="css/bootstrap-3.1.1.min.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/d3.v3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/customportal.js"></script>
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel='stylesheet' type='text/css' />
+    <link href="css/workbook.css" rel='stylesheet' type='text/css' />
+    <link href="css/jquery.countdown.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+    <!-- font-Awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- font-Awesome -->
+    <!--  tableau stuff -->
+    <script src="js/tableau-2.1.0.js"></script>
+    <script src="js/customportal.js"></script>
+    <script type="text/javascript" src="js/NetworkDiagram.js"></script>
+    <script type="text/javascript" src="js/CustomVizIntegration.js"></script>
+<script>
+    $(document).ready(function(){
+        initTableauViz();
+    });
+</script>
+
+    <style>
+        #graph {
+            float: left;
+            position: relative;
+        }
+        #notes {
+            float: left;
+            margin-left: 20px;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        h1 {
+            font-size: 1.4em;
+            margin-bottom: 0.2em;
+        }
+        h2 {
+            font-size: 1.1em;
+            margin-bottom: 1em;
+        }
+        .artwork img {
+            border: 1px solid #fff;
+            -webkit-box-shadow: 0 3px 5px rgba(0,0,0,.3);
+            -moz-box-shadow: rgba(0,0,0,.3) 0 3px 5px;
+            border-color: #a2a2a2    9;
+        }
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        li {
+            padding-top: 0.2em;
+        }
+        .node circle, circle.node {
+            cursor:       pointer;
+            fill:         #ccc;
+            stroke:       #fff;
+            stroke-width: 1px;
+        }
+        .edge line, line.edge {
+            cursor:       pointer;
+            stroke:       #aaa;
+            stroke-width: 2px;
+        }
+        .labelNode text, text.labelNode {
+            cursor:       pointer;
+            fill:        #444;
+            font-size:   11px;
+            font-weight: normal;
+        }
+        ul.connection {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: normal;
+            padding: 10px;
+            position: absolute;
+        }
+        ul.connection:before,
+        ul.connection:after {
+            border: 10px solid transparent;
+            content: '';
+            position: absolute;
+        }
+        ul.connection:before {
+            border-bottom-color: #f0f0f0;
+            top: -19px;
+            left: 20px;
+            z-index: 2;
+        }
+        ul.connection:after {
+            border-bottom-color: rgba(0, 0, 0, 0.2);
+            top: -21px;
+            left: 20px;
+            z-index: 1;
+        }
+        ul.connection.hidden {
+            display: none;
+        }
+        #submit {
+            float:left;
+            clear:both;
+            position:relative;
+            left:350px;
+        }
+        #properties-dropdown {
+            width: 200px;
+        }
+        #vizContainer {
+            display:inline-block;
+        }
+        #container {
+            display:inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"></div>
+<!-- banner -->
+  <div class="courses_banner">
+  	<div class="container">
+  		<h3>Analytics at Performing Arts University</h3>
+  		<p class="description">
+         When a University gives people self-service analysis tools, they feel different. Respected. Capable. Powerful. People start to drive their organization forward in ways that could never have been anticipated. They express their full ingenuity and creativity. Select a workbook to dive into a dashboard.
+        <div class="breadcrumb1">
+            <ul>
+                <li class="icon6"><a href="index.html">Home</a></li>
+                <li class="current-page">Self-Service Analytics</li>
+            </ul>
+        </div>
+  	</div>
+  </div>
+        <div id="vizContainer" style="width:1000px; height:600px;"></div>
+        <div id="container">
+            <div id="graph"></div>
+            <div id="notes"></div>
+        </div>
+    <div id="footer"></div>
+</body>
+</html>	

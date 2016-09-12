@@ -1,0 +1,36 @@
+.faculty_grid button {
+    text-align: center;
+    margin: 15px 0;
+    width: 100%;
+    font-size: x-large;
+}
+
+.admission {
+    padding: 0;
+}
+
+.viz {
+    max-height: 192px;
+    border: 1px solid rgb(47, 55, 76);
+}
+
+.viz a {
+    color: white;
+    transition: color 0s;
+}
+
+.viz:hover a {
+  color: #f1b458;
+  transition: color 0s;
+}
+
+figure.team_member figcaption {
+    transition: all 200ms;
+    text-align: right;
+    background-color:rgba(47, 55, 76, 0.71);
+    top: 70%;
+}
+
+figure.team_member img + div {
+  background: none;
+}
