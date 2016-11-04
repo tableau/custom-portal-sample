@@ -1,1 +1,0 @@
-../../server-api-js/dist/tableau-server-client.js

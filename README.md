@@ -7,17 +7,35 @@ Currently, running this sample requires using CORS Proxy to broker calls from th
 
 To set things up:
 
-1. Clone this repository (`custom-portal-sample`)
-2. From your terminal, go to the `custom-portal-js` directory and run `npm install`
-3. In `configure_app.js` (found in `custom-portal-sample\custom-portal-js\pages\js\`) -> set the IP to point to the CORS Proxy machine (see below in "Running the app"), set the tag, set user name/password/IP for Tableau Server
+1. Clone this repository (`custom-portal-sample`).
+2. From your terminal, go to the `custom-portal-js` directory and run `npm install`.
+3. Configure the sample (see below).
 4. From the 'custom-portal-sample\custom-portal-js' folder, run 'npm run build'. This will create a 'dist' directory which contains all the files needed for the web portal.
+
+# Configure the Sample
+
+Inside of `custom-portal-sample/custom-portal-js/pages/js/configure_app.js`, you will need to make sure changes.
+
+1. Set `server_url` to be the url of your tableau server.
+2. Set `username` and `password` to the username and password of an interactor on the server.
+3. Set `site_name` to the name of the site you want to use.  This is the site name that appears in the URL when you visit your tableau server (also sometimes refered to as site id).
+4. Set `team_tag` to be a tag that you have on your server.  This will be used to pull workbooks as part of the sample.
+5. If you are not going to run the CORS Proxy on your local machine, you'll need to update the `cors` entries to point to where you are running the CORS Proxy.
+
+# Why do I need the CORS Proxy
+
+[CORS](https://www.html5rocks.com/en/tutorials/cors/) is a technology that allows you to get around the same-origin policy by specifically allowing certain origins to request from your server.
+
+Tableau Server does not currently support configuring CORS, so you will need to use the CORS proxy to test this sample.
 
 # Running the app
 You will need to run two things: the CORS Proxy and a local webserver:
 * Start CORS Proxy -> From your terminal in the `custom-portal-js` directory, run `npm run cors`.
 * Start webserver -> From your terminal in the `custom-portal-js` directory run, `npm start` to use the webpack dev server.
 
-Note: You need to pack up all the files (and re-pack them after any edits). To do this you simply run `npm run build`. Then you copy everything from the `dist` directory to your webserver (or just run a webserver in that directory).
+This will start a `webpack-dev-server`, which you can hit using the URL that it outputs (most likely `http://localhost:8080/`).
+
+If you want to serve up the files from a static web server, you can also run `npm run build` which will create the `dist` directory under custom-portal-js.  Then you can copy the contents of the `dist` directory and serve it from a static web server, or if you have python, go into the `dist` directory and run `python -m SimpleHTTPServer` which will start a web server that can serve the files.
 
 # Pre-Release Software
 This project currently includes an unsupported, pre-release version of the forthcoming server client library (SCL) for JavaScript (called 'scl-alpha.js') which enables the browser to fetch objects from Tableau Server. Once the SCL for JS is released, this sample will be updated to use the released version.
