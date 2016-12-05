@@ -11,18 +11,18 @@ function initTableauViz() {
             allowFullScreen: false,
             onFirstInteractive: function () {
                 worksheet = viz.getWorkbook().getActiveSheet();
-                //Ideally we would want an option to ignore filters when using Get Data. 
+                //Ideally we would want an option to ignore filters when using Get Data.
                 //This is a work around, we get the filters store them, clear filters to get the full Data-set
-                // And reply the filter afterwards 
+                // And reply the filter afterwards
                 worksheet.getFiltersAsync().then(function(filters){
-                    if (filters !== null && filters !== undefined && 
+                    if (filters !== null && filters !== undefined &&
                         filters[0].getAppliedValues().length === 1) {
                         initialFestival = filters[0].getAppliedValues()[0].value;
                     }
                     return worksheet.clearFilterAsync('Festival');
                 }).then(getDataAndConstructGraph);
-                
-                viz.addEventListener(tableau.TableauEventName.MARKS_SELECTION, handleSelectionEvent); 
+
+                viz.addEventListener(tableau.TableauEventName.MARKS_SELECTION, handleSelectionEvent);
                 viz.addEventListener(tableau.TableauEventName.FILTER_CHANGE, handleFilterEvent);
             }
         };
@@ -62,14 +62,22 @@ function constructGraph(data) {
 function parseTableauData(dataTable) {
     var columns = dataTable.getColumns();
     var data = dataTable.getData();
-    var fieldNamesNeeded = ["Festival", "Artist Name", "PAUAffiliate?", "Track Preview URL", 
+    var fieldNamesNeeded = ["Festival", "Artist Name", "PAUAffiliate?", "Track Preview URL",
                             "Album Name", "Album Image URL"];
+    var fieldNamesRetrieved = [];
     var fieldNamesIndexMap = {};
     columns.forEach(function(column) {
         if (fieldNamesNeeded.includes(column.getFieldName())) {
             fieldNamesIndexMap[column.getFieldName()] = column.getIndex();
+            fieldNamesRetrieved.push(column.getFieldName());
         }
     });
+
+    var fieldNamesNotRetrieved = _.difference(fieldNamesNeeded, fieldNamesRetrieved);
+    if (fieldNamesNotRetrieved.length > 0) {
+        console.error("The following field names are missing: " + fieldNamesNotRetrieved);
+        console.log("Is the underlying data schema modified?");
+    }
 
     var artistsMap = {};
     data.forEach(function(rowEntry) {
@@ -142,4 +150,3 @@ function handleFilterEvent(filterEvent) {
     $('#graph').empty();
     $('#notes').empty();
 }
-
