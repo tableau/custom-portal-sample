@@ -56,7 +56,7 @@ module.exports = {
       { from: 'pages' }
     ]),
     new CopyWebpackPlugin([
-      { from: 'tableau-server-client.js' }
+      { from: 'scl-alpha.js' }
     ])
   ]
 };
