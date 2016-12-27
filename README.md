@@ -10,7 +10,8 @@ To set things up:
 1. Clone this repository (`custom-portal-sample`).
 2. From your terminal, go to the `custom-portal-js` directory and run `npm install`.
 3. Configure the sample (see below).
-4. From the 'custom-portal-sample\custom-portal-js' folder, run 'npm run build'. This will create a 'dist' directory which contains all the files needed for the web portal.
+4. Publish the included workbook ('ArtistFinder.twbx') to your Tableau Server. Use the same site you used in step 3.
+5. From the 'custom-portal-sample\custom-portal-js' folder, run 'npm run build'. This will create a 'dist' directory which contains all the files needed for the web portal.
 
 # Configure the Sample
 
@@ -21,6 +22,7 @@ Inside of `custom-portal-sample/custom-portal-js/pages/js/configure_app.js`, you
 3. Set `site_name` to the name of the site you want to use.  This is the site name that appears in the URL when you visit your tableau server (also sometimes refered to as site id).
 4. Set `team_tag` to be a tag that you have on your server.  This will be used to pull workbooks as part of the sample.
 5. If you are not going to run the CORS Proxy on your local machine, you'll need to update the `cors` entries to point to where you are running the CORS Proxy.
+6. Change the url on line 7 in CustomVizInteraction.js (in custom-portal-js/pages/js directory) to point to your Tableau Server.
 
 # Why do I need the CORS Proxy
 
