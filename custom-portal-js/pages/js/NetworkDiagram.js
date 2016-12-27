@@ -1,7 +1,6 @@
 //This file contains most of the logic for the d3 viz, which is represented through an instance
 //of the NetWorkDiagram class.
-var NetworkDiagram = function(data, deltas, containerDiv, notesDiv) {
-    this.deltas = deltas;
+var NetworkDiagram = function(data, containerDiv, notesDiv) {
     //The main graph container
 	this.graph = containerDiv;
 	this.notes = notesDiv;
@@ -15,7 +14,6 @@ NetworkDiagram.prototype.renderNetWork = function(artistName, currFestival) {
     var data = JSON.parse(JSON.stringify(this.data));
     var linkField = "TODO";
     this.linkField = linkField;
-    var linkDelta = this.deltas[linkField];
     var _this = this;
     // Define the dimensions of the visualization. We're using
     // a size that's convenient for displaying the graphic on
